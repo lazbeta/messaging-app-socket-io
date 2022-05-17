@@ -5,10 +5,10 @@ const messageSchema = mongoose.Schema({
         type: String,
         minlength: 1
     },
-    room: [{
+    room: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'room'
-    }]
+    }
 })
 
 messageSchema.set('toJSON', {
