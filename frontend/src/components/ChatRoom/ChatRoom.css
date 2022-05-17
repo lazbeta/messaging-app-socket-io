@@ -1,0 +1,11 @@
+.my-message {
+  background-color: rgb(0, 132, 255);
+  margin-left: auto;
+  position: right;
+}
+
+.received-message {
+  background-color: #08b539;
+  margin-right: auto;
+  position: left;
+}
