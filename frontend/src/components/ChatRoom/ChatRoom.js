@@ -1,4 +1,5 @@
 import react from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import io from 'socket.io-client'
 import './ChatRoom.css'
@@ -14,56 +15,56 @@ const ChatRoom = () => {
   const SOCKET_SERVER_URL = 'localhost:4000'
 
   //join room
-  react.useEffect(() => {
+  useEffect(() => {
     socket = io(SOCKET_SERVER_URL)
+    socket.on('connect', () => {
+      console.log(socket.id)
+    })
     socket.emit('joinRoom', room_id[1])
   }, [room_id])
 
   //send message
-  react.useEffect(() => {
+  useEffect(() => {
     socket.on('message', (message) => {
       const messageType = {
         ...message,
-        ownedByCurrentUser: message.senderId === socket.id,
+        ownedByCurrentUser: message.senderid === socket.id,
       }
-      setMessages([...messages, messageType])
+      setMessages((messages) => [...messages, messageType])
     })
-  }, [messages, room_id])
+  }, [])
 
   //get message history
-  react.useEffect(() => {
+  useEffect(() => {
     socket.emit('getHistory', roomId)
     socket.on('oldMessages', (messages) => {
       setMessages(messages)
     })
-  }, [roomId])
+  }, [])
 
   //send message
   const handleNewMessageChange = (event) => {
     setMessage(event.target.value)
   }
-  const handleSendMessage = async (event) => {
-    event.preventDefault()
-    await socket.emit('sendMessage', message, room_id[1], () => setMessage(''))
+  const handleSendMessage = () => {
+    if (message) {
+      console.log(message)
+      socket.emit('sendMessage', message, room_id[1], () => setMessage(''))
+    }
   }
 
-  const getMessages = Object.fromEntries(
-    Object.entries(messages).map(([key, { body }]) => [key, body])
-  )
-  const messageDisplay = Object.values(getMessages).map((item, index) => {
+  console.log(messages)
+
+  const messageDisplay = messages.map((message, index) => {
     return (
       <li
         key={index}
         className={`message-item ${
-          message.ownedByCurrentUser ? 'my-message' : 'received-message'
-        }`}
-      >
-        {item}
+          message.ownedByCurrentUser ? 'my-message' : 'received-message'}`}>
+        {message.body}
       </li>
     )
   })
-
-  console.log(messageDisplay, 'mess dispay')
 
   return (
     <>

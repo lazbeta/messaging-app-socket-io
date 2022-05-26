@@ -35,7 +35,7 @@ mongoose.connect(mongoDB,
 .catch(err => console.log(err))
 
 io.on('connection', (socket) => {
-    //console.log(socket.id)
+    console.log(socket.id)
 
     Room.find().then(result => {
         socket.emit('existingRooms', result)
@@ -59,15 +59,16 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (message, roomId, callback) => {
         const messageToStore = {
             body: message,
-            room: roomId
+            room: roomId,
+            senderid : socket.id
         }
         const msg = new Message(messageToStore)
         msg.save().then(message => {
             io.to(roomId).emit('message', message)
             callback()
             console.log(message)
-        })
-    })
+        })  
+    }) 
 
     //get old messages by room id
      socket.on('getHistory', roomId => {

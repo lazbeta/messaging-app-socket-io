@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { io } from 'socket.io-client'
 //components
-import RoomList from './Rooms'
+import RoomList from '../Rooms/Rooms'
 
 let socket
 
@@ -13,11 +13,10 @@ const Home = () => {
   //get all
   useEffect(() => {
     socket = io(SOCKET_SERVER_URL)
-    return () => {
-      socket.disconnect()
-      socket.off()
-    }
-  }, [SOCKET_SERVER_URL])
+    socket.on('connect', () => {
+      console.log(socket.id)
+    })
+  })
 
   //get already existing rooms
   useEffect(() => {
@@ -39,10 +38,9 @@ const Home = () => {
     setRoom('')
   }
 
-  console.log(rooms, 'rooms')
   return (
     <div>
-      <form onSubmit={handeleRoomChange}>
+      <form onSubmit={handeleRoomChange} className='form'>
         <input
           type="text"
           value={room}

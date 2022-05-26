@@ -3,13 +3,16 @@ const mongoose = require('mongoose')
 const messageSchema = mongoose.Schema({
    body: {
         type: String,
-        minlength: 1
+        minlength: 1,
+    },
+    senderid: {
+      type: String
     },
     room: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'room'
     }
-})
+}) 
 
 messageSchema.set('toJSON', {
   transform: (document, returnedObject) => {

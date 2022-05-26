@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import ChatRoom from './components/ChatRoom/ChatRoom'
-import Home from './components/Home'
+import Home from './components/Home/Home'
 
 const App = () => {
   return (
