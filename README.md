@@ -1,4 +1,5 @@
 # messaging-app-socket-io
+this project is not finished yet.
 
 ## server side
 - node
