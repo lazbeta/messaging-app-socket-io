@@ -1,6 +1,42 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 1px solid red;
+
+
+.input-field {
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    border: 2px solid black;
+    width: 57%;
 }
+
+.input-field2 {
+    padding: 10px 12px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    font-size: 18px;
+    width: 55%;
+    border: 2px solid black;
+}
+
+.form {
+    display: flex;
+}
+.form-center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+ .central {
+  text-align: center;
+
+ }

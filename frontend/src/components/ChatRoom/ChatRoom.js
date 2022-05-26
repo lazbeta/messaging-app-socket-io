@@ -43,7 +43,7 @@ const ChatRoom = () => {
   }, [])
 
   //send message
-  const handleNewMessageChange = (event) => {
+  const handleNewMessageChange = event => {
     setMessage(event.target.value)
   }
   const handleSendMessage = () => {
@@ -66,6 +66,7 @@ const ChatRoom = () => {
     )
   })
 
+
   return (
     <>
       <div>
@@ -76,8 +77,9 @@ const ChatRoom = () => {
         <textarea
           value={message}
           onChange={handleNewMessageChange}
-          placeholder="write here"
-          //onKeyPress={event => event.key === 'Enter' ? handleNewMessageChange(event) : null}
+          placeholder="write your message here"
+          className='input-field-chatroom'
+          //onKeyPress={(event) => event.key === 'Enter' && handleSendMessage()}
         />
         <button onClick={handleSendMessage}>send</button>
       </div>
@@ -86,6 +88,3 @@ const ChatRoom = () => {
 }
 
 export default ChatRoom
-
-/* className={`message-item ${
-                    message.ownedByCurrentUser ? "my-message" : "received-message"}`} */

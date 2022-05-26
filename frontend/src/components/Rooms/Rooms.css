@@ -1,22 +1,14 @@
 
-.roomListLi {
+.room-list {
     list-style: none;
-    padding: 5px;
-
     }
-
-.general {
-    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .LINK {
     text-decoration: none;
+}
+
+h2 {
+    text-align: center;
 }
 
 /* button */
@@ -25,7 +17,7 @@
   background-color: white;
   border: 2px solid #111;
   box-sizing: border-box;
-  margin-top: 6px;
+  margin-bottom: 26px;
   color: #111;
   cursor: pointer;
   display: flex;

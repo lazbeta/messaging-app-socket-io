@@ -7,13 +7,26 @@
     color: white;
 }
 
+.input-field-chatroom {
+    max-height: 50%;
+    font-size: 20px;
+    padding: 8px 12px;
+    resize: none;
+
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    border: 2px solid black;
+    width: 80%;
+}
+
 .my-message {
     background-color: rgb(0, 132, 255);
     margin-left: auto;
 }
 
 .received-message {
-    background-color: #07b312;
+    background-color: #585858;
     margin-right: auto;
 }
 
